@@ -4,7 +4,7 @@ import numpy as np
 
 st.title('Bike Karido Used bikes data')
 
-f = pd.read_csv(r'C:\Users\punee\OneDrive\Desktop\python\web scraping\secondhandbike.csv', sep='|')
+f = pd.read_csv(r'pages/secondhandbike.csv', sep='|')
 fdf = pd.DataFrame(f)
 fdf = fdf.drop(columns='Unnamed: 0')
 

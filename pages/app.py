@@ -55,8 +55,6 @@ if st.button("Fetch data"):
     else:
         fdf4 = fdf3
     st.write(fdf4)
-   
-    data = {'Price': [100, 200, 150, 300, 250], 'Make': ['A', 'B', 'A', 'B', 'A']}
 
   
     '''fig = px.histogram(fdf, x='Price', title='Histogram of Price')
@@ -71,9 +69,8 @@ if st.button("Fetch data"):
     x="Price",
     y="Registration_Year",
     color="Ownership",
-    hover_data=["KMs_Driven"],
+    hover_data=["KMs_Driven","Model","Make"],
     )
 
-    event = st.plotly_chart(fig, key="iris", on_select="rerun")
-    st.write(fdf4)
+    event = st.plotly_chart(fig, key="Price", on_select="rerun")
     event.selection

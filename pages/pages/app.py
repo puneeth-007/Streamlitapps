@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import plotly.express as px
+import webbrowser
 
 st.title('Bike Karido Used bikes data')
 
@@ -49,26 +50,23 @@ if st.button("Fetch data"):
     )
     st.plotly_chart(fig, key="Price")
 
-    # Display URL of selected data point
-    if "selectedData" in st.session_state:
-        selected_data = st.session_state.selectedData
-        if selected_data:
-            selected_point = selected_data['points'][0]
-            selected_url = selected_point['customdata'][0] # Assuming URL is in the customdata
-            if st.button("Open URL for Selected Bike"):
-                st.write(f"[Link to Selected Bike]({selected_url})")
+    # Create an empty container to display the selected URL
+    selected_url_container = st.empty()
 
-# JavaScript to get selected data point
-st.markdown("""
-<script type="text/javascript">
-    var plotly_chart = document.querySelector("[data-testid='stPlotlyChart']");
-    plotly_chart.on('plotly_click', function(data){
-        var selectedData = {
-            points: data.points.map(point => ({
-                customdata: point.customdata
-            }))
-        };
-        Streamlit.setComponentValue(selectedData);
-    });
-</script>
-""", unsafe_allow_html=True)
+    # JavaScript to get selected data point and open URL
+    st.markdown("""
+    <script type="text/javascript">
+        var plotly_chart = document.querySelector("[data-testid='stPlotlyChart']");
+        plotly_chart.on('plotly_click', function(data){
+            var selectedData = data.points[0];
+            var selectedUrl = selectedData.customdata[3];  // Assuming URL is in the customdata
+            Streamlit.setComponentValue(selectedUrl);
+        });
+    </script>
+    """, unsafe_allow_html=True)
+
+    if "selectedUrl" in st.session_state:
+        selected_url = st.session_state.selectedUrl
+        if st.button("Open URL for Selected Bike"):
+            selected_url_container.markdown(f"[Link to Selected Bike]({selected_url})")
+            webbrowser.open_new_tab(selected_url)

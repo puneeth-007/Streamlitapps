@@ -53,7 +53,17 @@ if st.button("Fetch data"):
         fdf4 = fdf3[fdf3['Make'] == company]
     else:
         fdf4 = fdf3
-
     st.write(fdf4)
+    import plotly.express as px
+    import pandas as pd
+
+    # Example DataFrame
+    data = {'Price': [100, 200, 150, 300, 250], 'Make': ['A', 'B', 'A', 'B', 'A']}
+
+    # Create histogram
+    fig = px.histogram(fdf, x='Price', title='Histogram of Price')
+    fig.show()
+    plotly_chart(fig)
+    '''st.write(fdf4)
     fig = ff.create_distplot( fdf4['Price'])
-    st.plotly_chart(fig)
+    st.plotly_chart(fig)'''

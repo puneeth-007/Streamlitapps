@@ -21,10 +21,10 @@ st.markdown(
         background-color: #ffffff;
     }
     .css-1aumxhk, .css-1vgnldk {
-        color: #ffffff;
+        color: #000000;  /* Keeping the text color black for visibility */
     }
     .st-bd {
-        color: #ffffff;
+        color: #000000;  /* Keeping the bold text color black for visibility */
         font-weight: bold;
     }
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
@@ -35,7 +35,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 st.title('Bike Karido Used bikes data')
 

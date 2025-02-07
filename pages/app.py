@@ -21,10 +21,10 @@ st.markdown(
         background-color: #ffffff;
     }
     .css-1aumxhk, .css-1vgnldk {
-        color: #000000;
+        color: #ffffff;
     }
     .st-bd {
-        color: #000000;
+        color: #ffffff;
         font-weight: bold;
     }
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');

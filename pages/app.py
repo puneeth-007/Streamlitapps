@@ -55,10 +55,10 @@ if st.button("Fetch data"):
     else:
         fdf4 = fdf3
     st.write(fdf4)
-    # Example DataFrame
+   
     data = {'Price': [100, 200, 150, 300, 250], 'Make': ['A', 'B', 'A', 'B', 'A']}
 
-    # Create histogram
+  
     fig = px.histogram(fdf, x='Price', title='Histogram of Price')
     fig.show()
     plotly_chart(fig)

@@ -15,16 +15,16 @@ st.markdown(
     """
     <style>
     .reportview-container {
-        background-color: #ffffff;
+        background-color: #f0f2f6;
     }
     .sidebar .sidebar-content {
         background-color: #ffffff;
     }
     .css-1aumxhk, .css-1vgnldk {
-        color: #000000;  /* Keeping the text color black for visibility */
+        color: #333333;
     }
     .st-bd {
-        color: #000000;  /* Keeping the bold text color black for visibility */
+        color: #4CAF50;
         font-weight: bold;
     }
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');

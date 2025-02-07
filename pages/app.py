@@ -73,7 +73,7 @@ if st.button("Fetch data"):
     )
     st.plotly_chart(fig, key="Price")
 
-    fig1 = px.sunburst(fd4, path=['Make'], values='Price', color='Make')
+    fig1 = px.sunburst(fdf4, path=['Make'], values='Price', color='Make')
     st.plotly_chart(fig1,key='Make')
     
     '''event = st.plotly_chart(fig, key="Price")

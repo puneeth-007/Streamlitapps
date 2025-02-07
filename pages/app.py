@@ -28,6 +28,7 @@ default_price1 = 1000000
 with st.sidebar:
     st.header('Filter Bikes')
     Price_range_lower = st.slider("Price range", 500, 10000000, (default_price, default_price1))
+    Price_range_upper = st.slider("Price range", 500, 10000000, (default_price, default_price1))
     ownership = st.radio("Select Ownership", ['All','First', 'Second', 'Third', 'Above'])
     company = st.selectbox("Select Company:", ["All"] + list(fdf['Make'].unique()))
     registration_year = st.selectbox("Year of Registration:", ["All"] + list(map(str, range(2000, 2025))))

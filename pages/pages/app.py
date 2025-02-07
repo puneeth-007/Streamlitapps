@@ -32,7 +32,7 @@ if st.button("Fetch data"):
         fdf_filtered = fdf_filtered[fdf_filtered['Make'] == company]
     
     
-    fdf_filtered['url'] = fdf_filtered['url'].apply(lambda x: f'<a href="{x}" target="_blank">{x}</a>')
+    fdf_filtered['link'] = fdf_filtered['link'].apply(lambda x: f'<a href="{x}" target="_blank">{x}</a>')
     st.markdown(fdf_filtered.to_html(escape=False), unsafe_allow_html=True)
 
     

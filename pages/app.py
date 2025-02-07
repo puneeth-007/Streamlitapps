@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
-import plotly.figure_factory as ff
 import plotly.express as px
 
 st.set_page_config(
@@ -15,16 +14,16 @@ st.markdown(
     """
     <style>
     .reportview-container {
-        background-color: #f0f2f6;
+        background-color: #ffffff;
     }
     .sidebar .sidebar-content {
         background-color: #ffffff;
     }
     .css-1aumxhk, .css-1vgnldk {
-        color: #333333;
+        color: #000000;
     }
     .st-bd {
-        color: #4CAF50;
+        color: #000000;
         font-weight: bold;
     }
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
@@ -92,7 +91,8 @@ if st.button("Fetch data"):
         fdf4,
         x="Price",
         y="Registration_Year",
-        color="Ownership", size="Price",
+        color="Ownership",
+        size="Price",
         hover_data=["KMs_Driven", "Model", "Make"],
     )
     st.plotly_chart(fig, key="Price")

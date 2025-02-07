@@ -53,10 +53,7 @@ if st.button("Fetch data"):
         plotly_chart.on('plotly_click', function(data){
             var selectedData = data.points[0];
             var selectedUrl = selectedData.customdata[3];  // Assuming URL is in the customdata
-            Streamlit.setComponentValue(selectedUrl);
-        });
-    </script>
-    """, unsafe_allow_html=True)
+            Streamlit.setComponentValue(selectedUrl); }); </script>""", unsafe_allow_html=True)
 
     if "selectedUrl" in st.session_state:
         selected_url = st.session_state.selectedUrl

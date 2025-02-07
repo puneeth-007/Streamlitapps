@@ -1,5 +1,7 @@
 import pandas as pd
 import streamlit as st
+import numpy as np
+import plotly.figure_factory as ff
 import plotly.express as px
 
 st.title('Bike Karido Used bikes data')
@@ -7,7 +9,6 @@ st.title('Bike Karido Used bikes data')
 f = pd.read_csv(r'pages/secondhandbike.csv', sep='|')
 fdf = pd.DataFrame(f)
 fdf = fdf.drop(columns='Unnamed: 0')
-
 
 fdf['Price'] = pd.to_numeric(fdf['Price'], errors='coerce')
 fdf['Registration_Year'] = pd.to_numeric(fdf['Registration_Year'], errors='coerce')
@@ -23,25 +24,52 @@ company = st.selectbox("Select Company (leave empty to fetch all):", ["All"] + l
 registration_year = st.selectbox("Enter Year of Registration:", ["All"] + list(map(str, range(2000, 2025))), key='registration_year')
 
 if st.button("Fetch data"):
-    fdf_filtered = fdf[(fdf['Price'] >= Price_range_lower) & (fdf['Price'] <= Price_range_upper)]
+    if Price_range_lower:
+        if Price_range_upper:
+            fdf1 = fdf[(fdf['Price'] >= Price_range_lower) & (fdf['Price'] <= Price_range_upper)]
+        else:
+            fdf1 = fdf[fdf['Price'] >= Price_range_lower]
+    else:
+        if Price_range_upper:
+            fdf1 = fdf[fdf['Price'] <= Price_range_upper]
+        else:
+            fdf1 = fdf
     if ownership != 'All':
-        fdf_filtered = fdf_filtered[fdf_filtered['Ownership'] == ownership]
-    if registration_year != "All":
-        fdf_filtered = fdf_filtered[fdf_filtered['Registration_Year'] == int(registration_year)]
-    if company != "All":
-        fdf_filtered = fdf_filtered[fdf_filtered['Make'] == company]
-    
-    
-    fdf_filtered['link'] = fdf_filtered['link'].apply(lambda x: f'<a href="{x}" target="_blank">{x}</a>')
-    st.markdown(fdf_filtered.to_html(escape=False), unsafe_allow_html=True)
+        if ownership:
+            fdf2 = fdf1[fdf1['Ownership'] == ownership]
+        else:
+            fdf2 = fdf1
+    else:
+        fdf2 = fdf1
 
-    
+    if registration_year != "All":
+        if registration_year:
+            fdf3 = fdf2[fdf2['Registration_Year'] == int(registration_year)]
+        else:
+            fdf3 = fdf2
+    else:
+        fdf3 = fdf2
+
+    if company != "All":
+        fdf4 = fdf3[fdf3['Make'] == company]
+    else:
+        fdf4 = fdf3
+    fdf4['link'] = fdf4['link'].apply(lambda x: f'<a href="{x}" target="_blank">{x}</a>')
+    st.markdown(fdf_filtered.to_html(escape=False), unsafe_allow_html=True)
+    '''fig = px.histogram(fdf, x='Price', title='Histogram of Price')
+    fig.show()
+    st.plotly_chart(fig)'''
+    '''st.write(fdf4)
+    fig = ff.create_distplot( fdf4['Price'])
+    st.plotly_chart(fig)'''
+    st.write(fdf4)
     fig = px.scatter(
-        fdf_filtered,
-        x="Price",
-        y="Registration_Year",
-        color="Ownership", 
-        size="Price",
-        hover_data=["KMs_Driven", "Model", "Make", "url"]
+    fdf4,
+    x="Price",
+    y="Registration_Year",
+    color="Ownership",size="Price",
+    hover_data=["KMs_Driven","Model","Make"],
     )
     st.plotly_chart(fig, key="Price")
+    '''event = st.plotly_chart(fig, key="Price")
+    event.selection'''

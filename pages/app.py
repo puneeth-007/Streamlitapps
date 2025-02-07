@@ -11,13 +11,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.set_page_config(
-    page_title="Bike Karido",
-    page_icon=":bike:",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
-
 st.markdown(
     """
     <style>

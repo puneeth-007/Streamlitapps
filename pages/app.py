@@ -59,9 +59,21 @@ if st.button("Fetch data"):
     data = {'Price': [100, 200, 150, 300, 250], 'Make': ['A', 'B', 'A', 'B', 'A']}
 
   
-    fig = px.histogram(fdf, x='Price', title='Histogram of Price')
+    '''fig = px.histogram(fdf, x='Price', title='Histogram of Price')
     fig.show()
-    st.plotly_chart(fig)
+    st.plotly_chart(fig)'''
+
     '''st.write(fdf4)
     fig = ff.create_distplot( fdf4['Price'])
     st.plotly_chart(fig)'''
+    fig = px.scatter(
+    fdf,
+    x="Price",
+    y="Registration_Year",
+    color="Ownership",
+    hover_data=["KMs_Driven"],
+    )
+
+    event = st.plotly_chart(fig, key="iris", on_select="rerun")
+    st.write(fdf4)
+    event.selection

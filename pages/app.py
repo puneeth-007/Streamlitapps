@@ -4,6 +4,13 @@ import numpy as np
 import plotly.figure_factory as ff
 import plotly.express as px
 
+st.set_page_config(
+    page_title="Bike Karido",
+    page_icon=":bike:",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 st.markdown(
     """
     <style>
@@ -20,13 +27,6 @@ st.markdown(
         color: #4CAF50;
         font-weight: bold;
     }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    """
-    <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
     .reportview-container, .sidebar .sidebar-content, .css-1aumxhk, .css-1vgnldk {
         font-family: 'Roboto', sans-serif;
@@ -34,12 +34,6 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-)
-st.set_page_config(
-    page_title="Bike Karido",
-    page_icon=":bike:",
-    layout="wide",
-    initial_sidebar_state="expanded",
 )
 
 st.title('Bike Karido Used bikes data')
@@ -94,25 +88,14 @@ if st.button("Fetch data"):
         fdf4 = fdf3
     st.write(fdf4)
 
-  
-    '''fig = px.histogram(fdf, x='Price', title='Histogram of Price')
-    fig.show()
-    st.plotly_chart(fig)'''
-
-    '''st.write(fdf4)
-    fig = ff.create_distplot( fdf4['Price'])
-    st.plotly_chart(fig)'''
     fig = px.scatter(
-    fdf4,
-    x="Price",
-    y="Registration_Year",
-    color="Ownership",size="Price",
-    hover_data=["KMs_Driven","Model","Make"],
+        fdf4,
+        x="Price",
+        y="Registration_Year",
+        color="Ownership", size="Price",
+        hover_data=["KMs_Driven", "Model", "Make"],
     )
     st.plotly_chart(fig, key="Price")
 
-    fig1 = px.sunburst(fdf4,path=['Location','Make','Name'],values='Price',color='Location')
-    st.plotly_chart(fig1,key='Make')
-    
-    '''event = st.plotly_chart(fig, key="Price")
-    event.selection'''
+    fig1 = px.sunburst(fdf4, path=['Location', 'Make', 'Name'], values='Price', color='Location')
+    st.plotly_chart(fig1, key='Make')

@@ -4,6 +4,44 @@ import numpy as np
 import plotly.figure_factory as ff
 import plotly.express as px
 
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background-color: #f0f2f6;
+    }
+    .sidebar .sidebar-content {
+        background-color: #ffffff;
+    }
+    .css-1aumxhk, .css-1vgnldk {
+        color: #333333;
+    }
+    .st-bd {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown(
+    """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    .reportview-container, .sidebar .sidebar-content, .css-1aumxhk, .css-1vgnldk {
+        font-family: 'Roboto', sans-serif;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.set_page_config(
+    page_title="Bike Karido",
+    page_icon=":bike:",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 st.title('Bike Karido Used bikes data')
 
 f = pd.read_csv(r'pages/secondhandbike.csv', sep='|')

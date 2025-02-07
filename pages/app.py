@@ -4,15 +4,7 @@ import numpy as np
 import plotly.figure_factory as ff
 import plotly.express as px
 
-st.set_page_config(
-    page_title="Bike Karido",
-    page_icon=":bike:",
-    layout="wide",
-    initial_sidebar_state="expanded",
-)
-
-px.defaults.color_continuous_scale = px.colors.sequential.Viridis
-
+st.title('Bike Karido Used bikes data')
 
 f = pd.read_csv(r'pages/secondhandbike.csv', sep='|')
 fdf = pd.DataFrame(f)
@@ -25,20 +17,12 @@ fdf['KMs_Driven'] = pd.to_numeric(fdf['KMs_Driven'], errors='coerce')
 default_price = 10000
 default_price1 = 1000000
 
-with st.sidebar:
-    st.header('Filter Bikes')
-    Price_range_lower = st.slider("Price range", 500, 10000000, (default_price, default_price1),key='lower')
-    Price_range_upper = st.slider("Price range", 500, 10000000, (default_price, default_price1),key='upper')
-    ownership = st.radio("Select Ownership", ['All','First', 'Second', 'Third', 'Above'])
-    company = st.selectbox("Select Company:", ["All"] + list(fdf['Make'].unique()))
-    registration_year = st.selectbox("Year of Registration:", ["All"] + list(map(str, range(2000, 2025))))
-
-'''Price_range_lower = st.number_input("Enter the Lower price:", min_value=500, max_value=10000000, key='price_lower', value=default_price)
+Price_range_lower = st.number_input("Enter the Lower price:", min_value=500, max_value=10000000, key='price_lower', value=default_price)
 Price_range_upper = st.number_input("Enter the Upper price:", min_value=500, max_value=10000000, key='price_upper', value=default_price1)
 ownership = st.selectbox("Select Ownership", ['All','First', 'Second', 'Third', 'Above'])
 company = st.selectbox("Select Company (leave empty to fetch all):", ["All"] + list(fdf['Make'].unique()), key='company')
 registration_year = st.selectbox("Enter Year of Registration:", ["All"] + list(map(str, range(2000, 2025))), key='registration_year')
-'''
+
 if st.button("Fetch data"):
     if Price_range_lower:
         if Price_range_upper:
@@ -91,9 +75,6 @@ if st.button("Fetch data"):
 
     fig1 = px.sunburst(fdf4,path=['Location','Make','Name'],values='Price',color='Location')
     st.plotly_chart(fig1,key='Make')
-
-    if st.button("Fetch data") or any([Price_range_lower, Price_range_upper, ownership, company, registration_year]):
-        st.write(fdf4)
     
     '''event = st.plotly_chart(fig, key="Price")
     event.selection'''

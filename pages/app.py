@@ -61,7 +61,7 @@ if st.button("Fetch data"):
   
     fig = px.histogram(fdf, x='Price', title='Histogram of Price')
     fig.show()
-    plotly_chart(fig)
+    st.plotly_chart(fig)
     '''st.write(fdf4)
     fig = ff.create_distplot( fdf4['Price'])
     st.plotly_chart(fig)'''

@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import plotly.figure_factory as ff
+import plotly.express as px
 
 st.title('Bike Karido Used bikes data')
 
@@ -54,9 +55,6 @@ if st.button("Fetch data"):
     else:
         fdf4 = fdf3
     st.write(fdf4)
-    import plotly.express as px
-    import pandas as pd
-
     # Example DataFrame
     data = {'Price': [100, 200, 150, 300, 250], 'Make': ['A', 'B', 'A', 'B', 'A']}
 

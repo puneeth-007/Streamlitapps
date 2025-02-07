@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
+import plotly.figure_factory as ff
 
 st.title('Bike Karido Used bikes data')
 
@@ -54,3 +55,5 @@ if st.button("Fetch data"):
         fdf4 = fdf3
 
     st.write(fdf4)
+    fig = ff.create_distplot( fdf4['Price'])
+    st.plotly_chart(fig)

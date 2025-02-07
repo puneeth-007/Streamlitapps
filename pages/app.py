@@ -71,6 +71,6 @@ if st.button("Fetch data"):
     color="Ownership",size="Price",
     hover_data=["KMs_Driven","Model","Make"],
     )
-     st.plotly_chart(fig, key="Price")
+    st.plotly_chart(fig, key="Price")
     '''event = st.plotly_chart(fig, key="Price")
     event.selection'''

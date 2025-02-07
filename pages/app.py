@@ -10,30 +10,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-st.markdown(
-    """
-    <style>
-    .reportview-container {
-        background-color: #ffffff;
-    }
-    .sidebar .sidebar-content {
-        background-color: #ffffff;
-    }
-    .css-1aumxhk, .css-1vgnldk {
-        color: #000000;
-    }
-    .st-bd {
-        color: #000000;
-        font-weight: bold;
-    }
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-    .reportview-container, .sidebar .sidebar-content, .css-1aumxhk, .css-1vgnldk {
-        font-family: 'Roboto', sans-serif;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 st.title('Bike Karido Used bikes data')
 

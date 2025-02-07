@@ -68,7 +68,7 @@ if st.button("Fetch data"):
     fdf4,
     x="Price",
     y="Registration_Year",
-    color="Ownership",size="Price"
+    color="Ownership",size="Price",
     hover_data=["KMs_Driven","Model","Make"],
     )
 

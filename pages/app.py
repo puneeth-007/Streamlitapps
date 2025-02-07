@@ -65,7 +65,7 @@ if st.button("Fetch data"):
     fig = ff.create_distplot( fdf4['Price'])
     st.plotly_chart(fig)'''
     fig = px.scatter(
-    fdf,
+    fdf4,
     x="Price",
     y="Registration_Year",
     color="Ownership",
